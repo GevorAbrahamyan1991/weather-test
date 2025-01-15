@@ -14,14 +14,20 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="flex gap-x-2">
       <input
         type="text"
         placeholder="Enter city name"
         value={city}
         onChange={(e) => setCity(e.target.value)}
+        className="px-4 py-2 rounded-lg"
       />
-      <button onClick={handleSearch}>Search</button>
+      <button
+        onClick={handleSearch}
+        className="bg-black py-2 rounded-lg px-4 text-white"
+      >
+        Search City
+      </button>
     </div>
   );
 };

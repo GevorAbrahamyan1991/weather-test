@@ -4,7 +4,7 @@ import { RootState } from "../redux/store";
 import Container from "./UI/Container";
 
 const HourlyWeather: React.FC = () => {
-  const { forecast, current } = useSelector(
+  const { forecast, current, unit } = useSelector(
     (state: RootState) => state.weather
   );
   console.log(forecast);
@@ -14,16 +14,19 @@ const HourlyWeather: React.FC = () => {
 
   const content = (
     <div className="">
-      <h2 className="font-bold text-2xl ">Hourly Weather in {current.name}</h2>
-      <div className="flex">
+      <div className="flex flex-col justify-center">
         {currentDayHours.map((hour: any, index: number) => (
-          <div key={index}>
+          <div key={index} className="flex gap-1">
             <p>{new Date(hour.dt * 1000).toLocaleTimeString()}</p>
-            <p>Temperature: {hour.main.temp}°</p>
-            <p>Condition: {hour.weather[0].description}</p>
+            <p className="font-normal ">
+              {unit === "metric"
+                ? `${current.main.temp}° C`
+                : `${(current.main.temp * 1.8 + 32).toFixed(2)}° F`}
+            </p>
             <img
               src={`https://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`}
               alt={hour.weather[0].description}
+              className="w-8 h-8"
             />
           </div>
         ))}

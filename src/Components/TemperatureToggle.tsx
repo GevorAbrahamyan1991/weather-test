@@ -9,7 +9,10 @@ const TemperatureToggle: React.FC = () => {
 
   return (
     <div>
-      <button onClick={() => dispatch(toggleUnit())}>
+      <button
+        className="bg-black py-2 rounded-lg px-4 text-white"
+        onClick={() => dispatch(toggleUnit())}
+      >
         Switch to {unit === "metric" ? "Fahrenheit" : "Celsius"}
       </button>
     </div>
