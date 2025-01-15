@@ -7,7 +7,6 @@ const HourlyWeather: React.FC = () => {
   const { forecast, current, unit } = useSelector(
     (state: RootState) => state.weather
   );
-  console.log(forecast);
   if (!forecast) return <p>Loading...</p>;
 
   const currentDayHours = forecast.list.slice(0, 8);

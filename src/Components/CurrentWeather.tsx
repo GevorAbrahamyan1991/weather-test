@@ -4,7 +4,6 @@ import { RootState } from "../redux/store";
 
 const CurrentWeather: React.FC = () => {
   const { current, unit } = useSelector((state: RootState) => state.weather);
-  console.log("M", current);
   if (!current) return <p>Loading...</p>;
 
   return (
